@@ -1,0 +1,31 @@
+#FoongAnn_Loo_loofoong_1004988659
+#Preeti_Kumari_kumarip3_1005057395
+
+reset;
+
+model '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q3.mod'
+data  '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project.dat';
+
+option solver 'C:\Program Files\AMPL64\gurobi.exe'
+solve;
+
+printf '(a) Optimal objective value: %.2f\n\n', profit >> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q3.out';
+
+printf '(b) Optimal x values: \n\n'>> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q3.out';
+display x>> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q3.out';
+
+printf '(c) Optimal x values as integers and the corresponding profit: \n\n'>> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q3.out';
+let {i in PROD} x[i] := round(x[i]);
+display profit, x>> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q3.out';
+ 
+if  sum{i in PROD} x[i] <= sum{m in WARE} capacity[m] then
+	printf '(d) constraint maxCapacity is not violated \n\n'>> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q3.out';
+	else 
+		printf '(d) constraint maxCapacity is violated \n\n'>> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q3.out';
+		
+for{i in PROD}
+	if x[i] <= demand[i] then
+	printf 'constraint maxDemand is not violated \n'>> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q3.out';
+	else 
+		printf 'constraint maxDemand is violated \n'>> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q3.out';
+

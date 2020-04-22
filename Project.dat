@@ -1,0 +1,31 @@
+#FoongAnn_Loo_loofoong_1004988659
+#Preeti_Kumari_kumarip3_1005057395
+
+table BOM IN "ODBC" "\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\WARP2011W.mdb" "BOM":
+	[Product_Num, RM_Num], qty ~ Quantity; 
+read table BOM; 
+
+table RawMaterials IN "ODBC" "\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\WARP2011W.mdb" "RM_Master": 
+	RM <- [RM_Num], cost ~ Cost, availQty ~ S_Quantity; 
+read table RawMaterials; 
+
+table MachineAssign IN "ODBC" "\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\WARP2011W.mdb" "Machine_Assign": 
+	[Product_Num, Machine_Num], duration ~ Avg_Duration; 
+read table MachineAssign; 
+
+table Machines IN "ODBC" "\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\WARP2011W.mdb" "Machine_Master": 
+	MAC <- [Machine_Num], opcost ~ OpCost_per_min; 
+read table Machines; 
+
+table Demand IN "ODBC" "\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\WARP2011W.mdb" "Demand_Feb06": 
+	[Product_Num], demand ~ Demand_Feb06; 
+read table Demand; 
+
+table Warehouses IN "ODBC" "\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\WARP2011W.mdb" "Warehouse_Master": 
+	WARE <- [Warehouse_Num], capacity ~ Capacity; 
+read table Warehouses;
+
+table Products IN "ODBC" "\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\WARP2011W.mdb" "Product_Master": 
+	PROD <- [Product_Num], price ~ Sales_Price; 
+read table Products; 
+

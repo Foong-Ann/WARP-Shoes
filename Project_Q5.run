@@ -1,0 +1,24 @@
+#FoongAnn_Loo_loofoong_1004988659
+#Preeti_Kumari_kumarip3_1005057395
+
+reset;
+
+model '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q5.mod'
+data  '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project.dat';
+
+option solver 'C:\Program Files\AMPL64\gurobi.exe'
+solve;
+
+printf '(a) Optimal objective value: %.2f\n\n', profit >> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q5.out';
+
+printf '(b) Optimal x values: \n\n'>> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q5.out';
+display x >> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q5.out';
+
+printf '(c) Optimal y values: \n\n'>> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q5.out';
+display y >> '\\SRVD\Homes$\loofoong\Documents\MIE262_Lab\Project\Project_Q5.out';
+
+
+ 
+
+
+
